@@ -87,6 +87,9 @@ It features an ultra-sleek, pixel-perfect Dark Mode user interface, master PIN s
 
 ```
 .
+├── bin/                         # Pre-compiled firmware binaries
+│   ├── firmware.bin             # Production binary release
+│   └── securekey_nodemcuv2.bin  # NodeMCU ESP8266 flashed binary
 ├── include/                     # C++ Header Files
 │   ├── LockScreen.h             # Static lock screen interface
 │   ├── PINEntryScreen.h         # Master PIN entry & security
@@ -115,11 +118,18 @@ It features an ultra-sleek, pixel-perfect Dark Mode user interface, master PIN s
 
 ## 🚀 Getting Started
 
-### Prerequisites
-- [PlatformIO IDE](https://platformio.org/) (VS Code Extension or CLI)
-- Python 3.x
+### Option 1: Flash Pre-Compiled Binary (`bin/`)
 
-### Build & Flash
+Ready-to-flash binaries are stored in the [`bin/`](bin/) folder:
+
+Using `esptool.py`:
+```bash
+esptool.py --port COM3 --baud 460800 write_flash 0x0 bin/firmware.bin
+```
+
+---
+
+### Option 2: Build & Flash with PlatformIO
 
 1. **Clone the repository**:
    ```bash
