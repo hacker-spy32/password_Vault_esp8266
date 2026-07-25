@@ -57,20 +57,29 @@ It features an ultra-sleek, pixel-perfect Dark Mode user interface, master PIN s
 - **Display**: 2.4" or 2.8" ILI9341 SPI TFT Display (320x240 resolution)
 - **Touch Controller**: XPT2046 SPI Touch Controller (integrated on TFT board)
 
-### Pinout Mapping
+### Complete Pinout Mapping
 
-| Component | ESP8266 Pin | NodeMCU Pin | Function |
+#### ILI9341 Display Wiring
+| TFT Display Pin | NodeMCU Pin | GPIO Pin | Function |
 | :--- | :--- | :--- | :--- |
-| **ILI9341 TFT** | GPIO15 | D8 | TFT CS (`TFT_CS`) |
-| **ILI9341 TFT** | GPIO0 | D3 | TFT DC (`TFT_DC`) |
-| **ILI9341 TFT** | GPIO2 | D4 | TFT Reset (`TFT_RST`) |
-| **ILI9341 TFT** | GPIO13 | D7 | SPI MOSI (`TFT_MOSI`) |
-| **ILI9341 TFT** | GPIO14 | D5 | SPI SCK (`TFT_SCLK`) |
-| **ILI9341 TFT** | GPIO12 | D6 | SPI MISO (`TFT_MISO`) |
-| **ILI9341 TFT** | GPIO16 | D0 | Backlight Control (`TFT_BL`) |
-| **XPT2046 Touch** | GPIO4 | D2 | Touch CS (`TOUCH_CS`) |
-| **Power** | 3.3V / Vin | 3V3 / VV | VCC (3.3V) |
-| **Ground** | GND | GND | Ground |
+| **VCC** | 3V3 | 3.3V | Display Power (3.3V) |
+| **GND** | GND | GND | Ground |
+| **CS** | D8 | GPIO15 | TFT Chip Select (`TFT_CS`) |
+| **RESET / RST** | D4 | GPIO2 | TFT Reset (`TFT_RST`) |
+| **DC / RS** | D3 | GPIO0 | Data / Command Select (`TFT_DC`) |
+| **SDI / MOSI** | D7 | GPIO13 | Hardware SPI MOSI (`TFT_MOSI`) |
+| **SCK / CLK** | D5 | GPIO14 | Hardware SPI Clock (`TFT_SCLK`) |
+| **LED / BL** | D0 | GPIO16 | Backlight Control (`TFT_BL`) |
+| **SDO / MISO** | D6 | GPIO12 | Hardware SPI MISO (`TFT_MISO`) |
+
+#### XPT2046 Touch Controller Wiring
+| Touch Module Pin | NodeMCU Pin | GPIO Pin | Function |
+| :--- | :--- | :--- | :--- |
+| **T_CS** | D2 | GPIO4 | Dedicated Touch Chip Select (`TOUCH_CS`) |
+| **T_CLK** | D5 | GPIO14 | Shared SPI Clock (connects to TFT SCK / D5) |
+| **T_DIN** | D7 | GPIO13 | Shared SPI MOSI (connects to TFT SDI / D7) |
+| **T_DO** | D6 | GPIO12 | Shared SPI MISO (connects to TFT SDO / D6) |
+| **T_IRQ** | *NC* | -- | Unused / Optional interrupt pin |
 
 ---
 
