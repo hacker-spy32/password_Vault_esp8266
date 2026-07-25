@@ -260,10 +260,20 @@ void FavoritesScreen::refreshFavoritesList() {
         return;
     }
     
-    favorites = vault->getFavorites();
+    // Get all favorites from vault
+    std::vector<PasswordEntry> allFavorites = vault->getFavorites();
+    
+    // Filter out one-time passwords (they should only appear in keypad/web UI)
+    favorites.clear();
+    for (const auto& entry : allFavorites) {
+        if (!entry.isOneTime) {
+            favorites.push_back(entry);
+        }
+    }
+    
     totalCount = favorites.size();
     
-    Serial.printf("[FAVORITES] Loaded %d favorites from vault\n", totalCount);
+    Serial.printf("[FAVORITES] Loaded %d favorites from vault (filtered out one-time entries)\n", totalCount);
     
     calculateMaxScroll();
 }

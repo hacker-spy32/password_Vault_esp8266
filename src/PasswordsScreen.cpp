@@ -271,10 +271,20 @@ void PasswordsScreen::refreshPasswordList() {
         return;
     }
     
-    passwords = vault->getAllPasswords();
+    // Get all passwords from vault
+    std::vector<PasswordEntry> allPasswords = vault->getAllPasswords();
+    
+    // Filter out one-time passwords (they should only appear in keypad/web UI)
+    passwords.clear();
+    for (const auto& entry : allPasswords) {
+        if (!entry.isOneTime) {
+            passwords.push_back(entry);
+        }
+    }
+    
     totalCount = passwords.size();
     
-    Serial.printf("[PASSWORDS] Loaded %d passwords from vault\n", totalCount);
+    Serial.printf("[PASSWORDS] Loaded %d passwords from vault (filtered out one-time entries)\n", totalCount);
     
     calculateMaxScroll();
 }
