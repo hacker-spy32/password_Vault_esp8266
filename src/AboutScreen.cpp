@@ -83,7 +83,7 @@ void AboutScreen::drawDynamicData() {
     tft->setTextColor(COLOR_BRASS, COLOR_INK);
     tft->setTextSize(3);
     tft->setTextDatum(TC_DATUM);
-    tft->drawString("SecureKey", SCREEN_WIDTH / 2, y);
+    tft->drawString("PassGuard", SCREEN_WIDTH / 2, y);
     y += 35;
     
     // Version

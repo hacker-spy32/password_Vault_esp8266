@@ -1,11 +1,11 @@
-# 🔐 SecureKey - ESP8266 Hardware Password Vault
+# 🔐 PassGuard - ESP8266 Hardware Password Vault
 
 [![PlatformIO](https://img.shields.io/badge/PlatformIO-Build-orange?logo=platformio)](https://platformio.org/)
 [![Board](https://img.shields.io/badge/Board-ESP8266%20NodeMCU-blue?logo=espressif)](https://www.espressif.com/)
 [![Display](https://img.shields.io/badge/Display-ILI9341%20320x240-brightgreen)](https://github.com/Bodmer/TFT_eSPI)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-**SecureKey** is a standalone, offline hardware password vault built for the **NodeMCU ESP8266 (ESP-12E)** microcontroller equipped with an **ILI9341 320x240 TFT LCD Touchscreen** and **XPT2046 touch controller**. 
+**PassGuard** is a standalone, offline hardware password vault built for the **NodeMCU ESP8266 (ESP-12E)** microcontroller equipped with an **ILI9341 320x240 TFT LCD Touchscreen** and **XPT2046 touch controller**. 
 
 It features an ultra-sleek, pixel-perfect Dark Mode user interface, master PIN security protection, an on-screen ABCD touch keyboard with intelligent auto-suggestions, LittleFS encrypted vault storage, a built-in Web UI management portal, and a 5-point touch calibration wizard.
 
@@ -35,7 +35,7 @@ It features an ultra-sleek, pixel-perfect Dark Mode user interface, master PIN s
   - Fast search, view, edit, and delete management.
 
 - 🌐 **Web UI & Captive Portal**:
-  - Integrated SoftAP WiFi access point (`SecureKey-Vault`) with Captive Portal DNS auto-popup.
+  - Integrated SoftAP WiFi access point (`PassGuard-Vault`) with Captive Portal DNS auto-popup.
   - Responsive Web UI dashboard for bulk CSV password import, export, and wireless editing.
   - Background execution mode option allowing Web UI and hardware screen to operate simultaneously.
 
@@ -89,7 +89,7 @@ It features an ultra-sleek, pixel-perfect Dark Mode user interface, master PIN s
 .
 ├── bin/                         # Pre-compiled firmware binaries
 │   ├── firmware.bin             # Production binary release
-│   └── securekey_nodemcuv2.bin  # NodeMCU ESP8266 flashed binary
+│   └── passguard_nodemcuv2.bin  # NodeMCU ESP8266 flashed binary
 ├── include/                     # C++ Header Files
 │   ├── LockScreen.h             # Static lock screen interface
 │   ├── PINEntryScreen.h         # Master PIN entry & security

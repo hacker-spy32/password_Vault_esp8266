@@ -73,7 +73,7 @@ void AddPasswordMenuScreen::drawStaticUI() {
     // ========================================================================
     display->fillRect(0, 0, SCREEN_WIDTH, STATUS_BAR_HEIGHT, COLOR_INK);
     
-    // SecureKey brand dot (left side) - small brass circle
+    // PassGuard brand dot (left side) - small brass circle
     display->fillCircle(12, 12, 3, COLOR_BRASS);
     
     // System status icons (right side) - placeholder WiFi indicator

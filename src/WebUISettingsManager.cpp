@@ -39,13 +39,13 @@ void WebUISettingsManager::setDefaults() {
     settings.version = SETTINGS_VERSION;
     
     // Default WiFi credentials
-    strncpy(settings.ssid, "SecureKey", sizeof(settings.ssid) - 1);
+    strncpy(settings.ssid, "PassGuard", sizeof(settings.ssid) - 1);
     settings.ssid[sizeof(settings.ssid) - 1] = '\0';
     
     strncpy(settings.pairCode, "123456", sizeof(settings.pairCode) - 1);
     settings.pairCode[sizeof(settings.pairCode) - 1] = '\0';
     
-    strncpy(settings.wifiPassword, "securekey", sizeof(settings.wifiPassword) - 1);
+    strncpy(settings.wifiPassword, "passguard", sizeof(settings.wifiPassword) - 1);
     settings.wifiPassword[sizeof(settings.wifiPassword) - 1] = '\0';
     
     // Default: manual start only (NOT auto-start on boot)

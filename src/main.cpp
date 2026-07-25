@@ -295,7 +295,7 @@ void handleExport() {
         csv += "\n";  // No URL field in PasswordEntry
     }
     
-    webServer->sendHeader("Content-Disposition", "attachment; filename=securekey_export.csv");
+    webServer->sendHeader("Content-Disposition", "attachment; filename=passguard_export.csv");
     webServer->send(200, "text/csv", csv);
     Serial.printf("[WEBUI_API] GET /export - Exported %d entries\n", entries.size());
 }
@@ -409,6 +409,29 @@ void handleClearExpiredTempPINs() {
 // ========== WEB UI START/STOP FUNCTIONS ==========
 
 /**
+ * Generate random password with letters only (8 characters)
+ */
+String generateRandomPassword() {
+    const char letters[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    String password = "";
+    for (int i = 0; i < 8; i++) {
+        password += letters[random(0, 52)];
+    }
+    return password;
+}
+
+/**
+ * Generate random PIN with numbers only (6 digits)
+ */
+String generateRandomPIN() {
+    String pin = "";
+    for (int i = 0; i < 6; i++) {
+        pin += String(random(0, 10));
+    }
+    return pin;
+}
+
+/**
  * Start the Web UI (WiFi hotspot + web server + Captive Portal DNS)
  */
 void startWebUI() {
@@ -419,6 +442,15 @@ void startWebUI() {
     
     Serial.println("[WEBUI] ========================================");
     Serial.println("[WEBUI] Starting Web UI & Captive Portal...");
+    
+    // Generate new random credentials each time
+    String newPassword = generateRandomPassword();
+    String newPairCode = generateRandomPIN();
+    
+    // Update settings with new random credentials
+    webUISettings.setWiFiPassword(newPassword);
+    webUISettings.setPairCode(newPairCode);
+    // Note: Not saving to persistent storage so they regenerate every restart
     
     String ssid = webUISettings.getSSID();
     String password = webUISettings.getWiFiPassword();

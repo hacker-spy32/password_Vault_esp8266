@@ -10,7 +10,7 @@
 
 static const char PORTAL_HTML[] PROGMEM = R"HTML(<!DOCTYPE html><html><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>SecureKey Portal</title><style>
+<title>PassGuard Portal</title><style>
 :root{--bg:#0b0e13;--card:#161b24;--card2:#1c222d;--line:#272e3a;--txt:#eef1f6;--mut:#8a93a4;--accent:#4d9fff;--ok:#36d67a;--err:#ff5f6d;--warn:#f5a623}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{margin:0;background:radial-gradient(1000px 500px at 50% -10%,#15243b,#0b0e13) fixed;color:var(--txt);font-family:-apple-system,Segoe UI,Roboto,sans-serif}
@@ -50,7 +50,7 @@ label{display:block;font-size:12px;color:var(--mut);margin:10px 2px 5px;font-wei
 </style></head><body>
 
 <div id="gate" class="overlay"><div class="modal">
- <h1>SecureKey</h1><p class="mut">Enter the 6-digit code shown on your device.</p>
+ <h1>PassGuard</h1><p class="mut">Enter the 6-digit code shown on your device.</p>
  <input id="gcode" class="gate" inputmode="numeric" maxlength="6" placeholder="------">
  <button style="width:100%;margin-top:14px" onclick="unlock()">Unlock</button>
  <div id="gerr" class="mut" style="color:var(--err);margin-top:8px"></div>
@@ -58,7 +58,7 @@ label{display:block;font-size:12px;color:var(--mut);margin:10px 2px 5px;font-wei
 
 <div id="app" class="wrap hidden">
  <div class="head">
-  <h1>SecureKey</h1>
+  <h1>PassGuard</h1>
   <div class="row">
    <button class="ghost mini" onclick="openSettings()">Settings</button>
   </div>
@@ -151,7 +151,7 @@ label{display:block;font-size:12px;color:var(--mut);margin:10px 2px 5px;font-wei
  <p class="mut">Configure WiFi hotspot and auto-start behavior.</p>
  
  <label>WiFi Name (SSID)</label>
- <input id="wuiSSID" placeholder="SecureKey" maxlength="32">
+ <input id="wuiSSID" placeholder="PassGuard" maxlength="32">
  
  <label>Pair Code</label>
  <input id="wuiCode" placeholder="123456" inputmode="numeric" maxlength="6">
@@ -403,7 +403,7 @@ function openSettings(){
     if(!r.ok)throw new Error("Failed to load settings");
     return r.json();
   }).then(function(d){
-    $("wuiSSID").value=d.ssid||"SecureKey";
+    $("wuiSSID").value=d.ssid||"PassGuard";
     $("wuiCode").value=d.pairCode||"";
     $("wuiPass").value=d.wifiPassword||"";
     $("wuiBg").checked=d.runInBackground||false;
